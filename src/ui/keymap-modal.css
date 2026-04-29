@@ -1,0 +1,61 @@
+/* PAGE-001 (`/`). Keymap modal — TASK-049. */
+.keymap-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 10, 0.78);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+.keymap-modal[data-open="1"] { display: flex; }
+.keymap-modal .panel {
+  background: #1a1a1c;
+  border: 1px solid #2a2a2c;
+  border-radius: 12px;
+  padding: 22px;
+  max-width: 440px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: auto;
+  color: var(--brand-white);
+}
+.keymap-modal h2 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 230, 0.6);
+  margin: 0 0 14px;
+}
+.keymap-modal .row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 6px 14px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.keymap-modal kbd {
+  font-family: ui-monospace, monospace;
+  background: #2a2a2c;
+  border: 1px solid #3a3a3c;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  color: var(--brand-white);
+}
+.keymap-modal .row span { color: rgba(244, 240, 230, 0.6); }
+.keymap-modal .close {
+  margin-top: 18px;
+  background: var(--brand-red);
+  color: var(--brand-white);
+  border: 0;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 12px;
+}

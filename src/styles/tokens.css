@@ -1,0 +1,67 @@
+/* PAGE-001 (`/`). Locked palette per visual-spec rev2 §3 — ONLY colors that may appear on render. */
+:root {
+  --page-bg:         #1f1f23;
+  --device-black:    #0a0a0a;
+  --bezel-edge:      #1c1c1c;
+  --bezel-shadow:    #000000;
+
+  --key-black:       #171717;
+  --key-edge-light:  #2a2a2a;
+  --key-edge-dark:   #000000;
+  --key-recess:      #000000;
+
+  --key-2nd-grey:    #9d9d9d;
+  --key-2nd-light:   #b8b8b8;
+  --key-2nd-dark:    #7a7a7a;
+
+  --key-outline:     #cfcfcf;
+
+  --label-primary:   #f4f0e6;
+  --label-2nd:       #f4f0e6;
+
+  --brand-white:     #f4f0e6;
+  --brand-rule:      #f4f0e6;
+  --brand-red:       #a01818;
+  --ti-emblem-red:   #cf1f1f;
+
+  --lcd-bg:          #a8b09a;
+  --lcd-bg-edge:     #9aa28b;
+  --lcd-segment:     #1f2118;
+  --lcd-bezel:       #262626;
+  --lcd-glare:       #ffffff;
+
+  --tagline-grey:    #9a9a9a;
+}
+
+.key-recess {
+  fill: none;
+  stroke: var(--key-recess);
+  stroke-opacity: 0.50;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+.key-cap          { fill: var(--key-black); }
+.key-cap.second   { fill: var(--key-2nd-grey); }
+.cap-fill         { fill: var(--key-black); }
+
+.key-edge-top {
+  fill: none;
+  stroke: var(--key-edge-light);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.key-edge-top.second   { stroke: var(--key-2nd-light); }
+.key-edge-bottom {
+  fill: none;
+  stroke: var(--key-edge-dark);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.key-edge-bottom.second { stroke: var(--key-2nd-dark); }
+
+.key-tvm-outline {
+  fill: none;
+  stroke: var(--key-outline);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}

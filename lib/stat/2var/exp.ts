@@ -1,0 +1,1 @@
+import { populated2 } from './errors'; import { linCore } from './lin'; import { type Stat2Slot } from './reducer'; export const computeEXP = (slots: Stat2Slot[]) => { const fit=linCore(populated2(slots).map(p=>({x:p.x, y:Math.log(p.y)}))); return { a: Math.exp(fit.a), b: Math.exp(fit.b), r: fit.r }; };

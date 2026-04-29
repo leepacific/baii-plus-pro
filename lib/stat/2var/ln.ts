@@ -1,0 +1,1 @@
+import { populated2 } from './errors'; import { linCore } from './lin'; import { type Stat2Slot } from './reducer'; export const computeLn = (slots: Stat2Slot[]) => linCore(populated2(slots).map(p=>({x:Math.log(p.x), y:p.y})));

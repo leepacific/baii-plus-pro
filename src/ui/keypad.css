@@ -1,0 +1,4 @@
+/* PAGE-001 (`/`). Keypad-specific cap clip-path styles — TASK-208. */
+g.key.cap-trapezoid > .cap-fill {
+  clip-path: polygon(2.5% 0%, 97.5% 0%, 100% 100%, 0% 100%);
+}

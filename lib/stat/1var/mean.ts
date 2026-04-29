@@ -1,0 +1,1 @@
+import { computeN } from './n'; import { computeSumX } from './sum-x'; import { type Stat1Slot } from './reducer'; export const computeMean = (slots: Stat1Slot[]) => computeSumX(slots)/computeN(slots);

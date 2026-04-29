@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PAGE-001 (`/`). Asymmetric bezel curve mask — TASK-209. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 195">
+  <clipPath id="chassis-asym-bezel">
+    <path d="M 4 0 Q 30 1.2 50 0.6 Q 75 0 96 1.4 L 96 195 L 4 195 Z"/>
+  </clipPath>
+</svg>

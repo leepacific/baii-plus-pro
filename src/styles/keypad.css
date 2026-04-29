@@ -1,0 +1,34 @@
+/* PAGE-001 (`/`). Keypad SVG geometry — TASK-042 / REQ-001 / REQ-002. */
+g.key { cursor: pointer; }
+g.key[data-press="1"] .cap-fill { fill: #0d0d0d; }
+g.key.is-2nd[data-press="1"] .cap-fill { fill: #888; }
+g.key:focus-visible { outline: none; }
+g.key:focus-visible .cap-fill { stroke: var(--brand-red); stroke-width: 0.5; }
+g.key[data-second-on="1"] .cap-fill { fill: #b8b8b8; }
+
+/* TASK-208 trapezoidal cap clip-path */
+g.key.cap-trapezoid > .cap-fill,
+g.key.cap-trapezoid > .key-cap {
+  clip-path: polygon(2.5% 0%, 97.5% 0%, 100% 100%, 0% 100%);
+}
+
+.key-label {
+  font-family: "Helvetica Neue", system-ui, sans-serif;
+  font-weight: 600;
+  fill: var(--label-primary);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.key-label.on-grey { fill: #1a1a1a; }
+.key-2nd-legend {
+  font-family: "Helvetica Neue", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 2.06px;
+  fill: var(--label-2nd);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  g.key { transition: none; }
+}

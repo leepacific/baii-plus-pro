@@ -1,0 +1,34 @@
+/* PAGE-001 (`/`). LCD chassis — TASK-043 / REQ-023. */
+.lcd-segment-text {
+  font-family: "DSEG7 Classic", "DSEG7Classic", "Courier New", monospace;
+  fill: var(--lcd-segment);
+  text-anchor: end;
+  dominant-baseline: middle;
+}
+
+.lcd-ghost {
+  font-family: "DSEG7 Classic", "DSEG7Classic", "Courier New", monospace;
+  fill: var(--lcd-segment);
+  text-anchor: end;
+  dominant-baseline: middle;
+  opacity: 0.08;
+}
+
+.lcd-indicator {
+  font-family: "DSEG14 Classic", "Courier New", monospace;
+  font-size: 1.95px;
+  fill: var(--lcd-segment);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  opacity: 0.15;
+}
+.lcd-indicator.on { opacity: 0.90; }
+
+.lcd-label {
+  font-family: "DSEG14 Classic", "Courier New", monospace;
+  fill: var(--lcd-segment);
+  text-anchor: start;
+  dominant-baseline: middle;
+  font-size: 3px;
+  opacity: 0.85;
+}

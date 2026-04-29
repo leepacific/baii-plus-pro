@@ -1,0 +1,23 @@
+/* PAGE-001 (`/`). Landscape rotation overlay — TASK-044 / REQ-003. */
+.rotate-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--device-black);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  color: var(--brand-white);
+  font-family: "Helvetica Neue", system-ui, sans-serif;
+  font-size: 5vw;
+  text-align: center;
+  padding: 24px;
+}
+.rotate-overlay svg { width: 14vw; height: 14vw; }
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .rotate-overlay { display: flex; }
+  .calculator { visibility: hidden; }
+}

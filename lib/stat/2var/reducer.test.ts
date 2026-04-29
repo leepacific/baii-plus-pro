@@ -1,0 +1,21 @@
+import { expect, it } from 'vitest';
+import { cycleRegressionMode, editStat2Slot, initialStat2State } from './reducer';
+import { validateRegressionDomain } from './errors';
+import { computeLIN } from './lin';
+import { computeLn } from './ln';
+import { computeEXP } from './exp';
+import { computePWR } from './pwr';
+import { predictY } from './predict-y';
+import { predictX } from './predict-x';
+it('computes 2-var regression modes', () => {
+  let s = editStat2Slot(initialStat2State(), 1, 2); s = { ...s, cursor: 1 }; s = editStat2Slot(s, 2, 4); s = { ...s, cursor: 2 }; s = editStat2Slot(s, 3, 6);
+  expect(cycleRegressionMode(s).mode).toBe('Ln');
+  expect(computeLIN(s.slots).b).toBeCloseTo(2);
+  expect(computeLn(s.slots).b).toBeGreaterThan(0);
+  expect(computeEXP(s.slots).a).toBeGreaterThan(0);
+  expect(computePWR(s.slots).a).toBeGreaterThan(0);
+  expect(predictY(s.slots, 'LIN', 4)).toBeCloseTo(8);
+  expect(predictX(s.slots, 'LIN', 8)).toBeCloseTo(4);
+  expect(validateRegressionDomain([{ x: -1, y: 2 }], 'Ln').ok).toBe(false);
+  expect(validateRegressionDomain([{ x: -1, y: 2 }], 'LIN').ok).toBe(true);
+});

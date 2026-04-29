@@ -1,0 +1,26 @@
+import { expect, it } from 'vitest';
+import { dayCountAct } from './day-count-act';
+import { dayCount360 } from './day-count-360';
+import { accruedInterest } from './accrued-interest';
+import { bondPrice } from './price';
+import { yieldNewton } from './yield-newton';
+import { yieldFallback } from './yield-fallback';
+import { modifiedDuration } from './modified-duration';
+import { applyCouponFrequency } from './freq-toggle';
+import { applyDayCount } from './day-count-toggle';
+import { initialBondState, toggleBondDayCount, toggleBondFrequency } from './reducer';
+const s = { SDT: new Date('2026-01-01T00:00:00Z'), RDT: new Date('2031-01-01T00:00:00Z'), CPN: 5, RV: 100, dayCount: 'ACT' as const, frequency: 2 as const };
+it('handles bond worksheet primitives', () => {
+  expect(dayCountAct({ year: 2024, month: 1, day: 1 }, { year: 2024, month: 1, day: 31 }).days).toBe(30);
+  expect(dayCount360({ year: 2024, month: 1, day: 31 }, { year: 2024, month: 2, day: 28 }).days).toBe(28);
+  expect(accruedInterest(s)).toBe(1.25);
+  const price = bondPrice(s, 5);
+  expect(price).toBeCloseTo(98.75, 1);
+  expect(yieldNewton(s, price)).toBeCloseTo(5, 5);
+  expect(yieldFallback(s, price)).toBeCloseTo(5, 5);
+  expect(modifiedDuration(s, 5)).toBeGreaterThan(0);
+  expect(applyCouponFrequency(1, 2)).toBe(1);
+  expect(applyDayCount(1, '360')).toBe(1);
+  expect(toggleBondDayCount(initialBondState()).dayCount).toBe('360');
+  expect(toggleBondFrequency(initialBondState()).frequency).toBe(1);
+});

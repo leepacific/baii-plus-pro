@@ -1,0 +1,1 @@
+import { populated, requireNonEmpty, requireNonNegativeFreq } from './errors'; import { type Stat1Slot } from './reducer'; export const computeN = (slots: Stat1Slot[]) => !requireNonEmpty(slots).ok || !requireNonNegativeFreq(slots).ok ? NaN : populated(slots).reduce((s,v)=>s+v.y,0);

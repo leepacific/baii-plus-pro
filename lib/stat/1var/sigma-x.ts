@@ -1,0 +1,1 @@
+import { populated } from './errors'; import { computeMean } from './mean'; import { computeN } from './n'; import { type Stat1Slot } from './reducer'; export const computeSigmaX = (slots: Stat1Slot[]) => { const n=computeN(slots), m=computeMean(slots); return Math.sqrt(populated(slots).reduce((s,v)=>s+v.y*(v.x-m)**2,0)/n); };
