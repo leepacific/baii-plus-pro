@@ -20,6 +20,12 @@ const TVM_REGISTER_KEYS: KeyId[] = [KeyId.N, KeyId.I_Y, KeyId.PV, KeyId.PMT, Key
 const clearCptPending = (state: EngineState): EngineState =>
   state.tvm.cptPending ? { ...state, tvm: { ...state.tvm, cptPending: false } } : state;
 export const dispatchKey = (state: EngineState, key: KeyId): DispatchResult => {
+  // ON/OFF toggles powered state. The powered=false short-circuit is
+  // applied at the Engine wrapper layer (createEngine), not here, so unit
+  // tests that exercise reducers directly do not need to power-on first.
+  if (key === KeyId.ON_OFF) {
+    return { state: { ...state, powered: !state.powered }, reducerId: 'noop' };
+  }
   const second = reduceSecondModifier(state, key);
   if (second.consumed) return { state: second.state, reducerId: 'second' };
   if (second.secondary) {

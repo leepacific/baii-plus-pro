@@ -7,7 +7,7 @@ export type TimingMode = 'END' | 'BGN';
 export type ArithOperator = '+' | '-' | '*' | '/' | '^';
 export interface DisplayState { value: number; entry: string; pendingOperator: ArithOperator | null; accumulator: number|null; justEvaluated: boolean; parenStack?: { accumulator: number | null; pendingOperator: ArithOperator | null }[] }
 export interface TvmRegisters { N: number|null; IY: number|null; PV: number|null; PMT: number|null; FV: number|null; PY: number; CY: number; cyIndependent: boolean; timing: TimingMode; lastTvmKey: 'N'|'IY'|'PV'|'PMT'|'FV'|null; cptPending: boolean }
-export interface EngineState { mode: WorksheetMode; display: DisplayState; tvm: TvmRegisters; memory: MemoryState; format: FormatState; secondLatched: boolean; error: ErrorCode | null }
+export interface EngineState { mode: WorksheetMode; display: DisplayState; tvm: TvmRegisters; memory: MemoryState; format: FormatState; secondLatched: boolean; error: ErrorCode | null; powered: boolean }
 export const DefaultState: EngineState = {
   mode: 'standard',
   display: { value: 0, entry: '0', pendingOperator: null, accumulator: null, justEvaluated: false },
@@ -15,6 +15,7 @@ export const DefaultState: EngineState = {
   memory: initialMemoryState(),
   format: initialFormatState(),
   secondLatched: false,
-  error: null
+  error: null,
+  powered: false
 };
 export const cloneDefaultState = (): EngineState => structuredClone(DefaultState);

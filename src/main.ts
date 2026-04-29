@@ -59,7 +59,9 @@ renderKeypad(svg);
 initLcd(svg);
 
 // 5. Engine + worksheet controller.
-const engine = createEngine();
+// initiallyPowered: false — boots OFF (LCD blank) per physical BA II Plus
+// behavior. User presses ON|OFF to power on.
+const engine = createEngine({ initiallyPowered: false });
 const controller = createWorksheetController();
 
 // Expose memory state R/W to the keypad handler (STO/RCL).

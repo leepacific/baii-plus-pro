@@ -6,6 +6,16 @@ import { setLcd } from './lcd';
 import type { WorksheetController } from './worksheets/controller';
 
 export const renderDisplay = (engine: Engine, controller: WorksheetController): void => {
+  const state = engine.getState();
+  // Powered off: LCD blank — empty primary text, no label, no indicators.
+  if (!state.powered) {
+    setLcd({
+      primary: { kind: 'text' as const, text: '' },
+      label: '',
+      indicators: {},
+    });
+    return;
+  }
   const ws = controller.getActiveWorksheet();
   if (ws) {
     const view = ws.view();
@@ -16,7 +26,6 @@ export const renderDisplay = (engine: Engine, controller: WorksheetController): 
     });
     return;
   }
-  const state = engine.getState();
   const text = state.error
     ? { kind: 'error' as const, code: errorToCode(String(state.error)) }
     : state.display.entry !== '' && state.display.entry !== '0'
